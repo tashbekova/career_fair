@@ -1,13 +1,18 @@
 from django.db import models
 
 # Create your models here.
+class CompanyType(models.Model):
+    type_name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.type_name
+
+    class Meta:
+        verbose_name_plural = 'Вид партнерства'
+        
 class FairInfo(models.Model):
     title = models.CharField(max_length=255,verbose_name="Заголовок")
     description = models.TextField(null=True, blank=True,verbose_name="Описание")
-    target = models.TextField( null=True, blank=True,verbose_name="Цель")
-    mission = models.TextField( null=True, blank=True,verbose_name="Миссии")
-    task = models.TextField( null=True, blank=True,verbose_name="Задачи")
-    
 
     def __str__(self):
         return self.title
@@ -39,7 +44,7 @@ class Sponsor(models.Model):
         verbose_name_plural = 'Спонсоры'
 
 class Partner(models.Model):
-    type = models.ForeignKey(CompanyType, null=True, on_delete=models.SET_NULL, related_name='type')
+    company = models.ForeignKey('CompanyType', null=True, on_delete=models.SET_NULL)
     full_name = models.CharField(max_length=255,verbose_name="Название компании")
     description = models.TextField(null=True, blank=True,verbose_name="Описание")
     logo_url = models.ImageField(null=True)
@@ -76,8 +81,3 @@ class Shedule(models.Model):
         verbose_name = 'Расписание'
         verbose_name_plural = 'Расписание'
 
-class CompanyType(models.Model):
-    type_name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.type_name

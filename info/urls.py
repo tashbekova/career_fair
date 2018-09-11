@@ -9,7 +9,6 @@ router.register(r'about', views.FairInfoViewSet, 'about')
 router.register(r'organizer', views.OrganizerViewSet, 'organizers')
 router.register(r'sponsor', views.SponsorViewSet, 'sponsors')
 router.register(r'partner', views.PartnerViewSet, 'partners')
-router.register(r'mediapartner', views.MediaPartnerViewSet, 'mediapartners')
 router.register(r'shedule', views.SheduleViewSet, 'shedules')
 urlpatterns = [
     url(r'^', include(router.urls)),
