@@ -23,11 +23,6 @@ class PartnerSerializer(ModelSerializer):
         model = Partner
         fields = '__all__'
 
-class MediaPartnerSerializer(ModelSerializer):
-    class Meta:
-        model = MediaPartner
-        fields = '__all__'
-
 class EmployerSerializer(ModelSerializer):
     class Meta:
         model = Employer

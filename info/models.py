@@ -39,6 +39,7 @@ class Sponsor(models.Model):
         verbose_name_plural = 'Спонсоры'
 
 class Partner(models.Model):
+    type = models.ForeignKey(CompanyType, null=True, on_delete=models.SET_NULL, related_name='type')
     full_name = models.CharField(max_length=255,verbose_name="Название компании")
     description = models.TextField(null=True, blank=True,verbose_name="Описание")
     logo_url = models.ImageField(null=True)
@@ -49,16 +50,6 @@ class Partner(models.Model):
     class Meta:
         verbose_name_plural = 'Партнёры'
 
-class MediaPartner(models.Model):
-    full_name = models.CharField(max_length=255,verbose_name="Название компании")
-    description = models.TextField(null=True, blank=True,verbose_name="Описание")
-    logo_url = models.ImageField(null=True)
-
-    def __str__(self):
-        return self.full_name
-
-    class Meta:
-        verbose_name_plural = 'Медиа партнёры'
 
 class Employer(models.Model):
     full_name = models.CharField(max_length=255,null=True,verbose_name="ФИО или название")
@@ -84,3 +75,9 @@ class Shedule(models.Model):
     class Meta:
         verbose_name = 'Расписание'
         verbose_name_plural = 'Расписание'
+
+class CompanyType(models.Model):
+    type_name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.type_name

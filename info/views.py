@@ -24,9 +24,6 @@ class PartnerViewSet(ReadOnlyModelViewSet):
     queryset = Partner.objects.all()
     serializer_class = PartnerSerializer
 
-class MediaPartnerViewSet(ReadOnlyModelViewSet):
-    queryset = MediaPartner.objects.all()
-    serializer_class = MediaPartnerSerializer
 
 class EmployerViewSet(ReadOnlyModelViewSet):
     queryset = Employer.objects.all()
